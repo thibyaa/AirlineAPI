@@ -21,9 +21,8 @@ public class PassengerController {
 //    TODO: ADD A NEW PASSENGER
 //    CREATE
     @PostMapping
-    public ResponseEntity<Passenger> addNewPassenger(Passenger passenger){
-        Passenger npassenger = passengerService.addNewPassenger(passenger);
-        return new ResponseEntity<>(npassenger, HttpStatus.CREATED);
+    public ResponseEntity<Passenger> addNewPassenger(@RequestBody Passenger passenger){
+        return new ResponseEntity<>(passengerService.addNewPassenger(passenger), HttpStatus.CREATED);
     }
 
 //    TODO: DISPLAY DETAILS OF ALL PASSENGERS
