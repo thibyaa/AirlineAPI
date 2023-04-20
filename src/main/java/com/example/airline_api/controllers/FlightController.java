@@ -33,9 +33,15 @@ public class FlightController {
 //    TODO: DISPLAY DETAILS OF A SPECIFIC FLIGHT
 //    SHOW
     @GetMapping("/{id}")
-    public ResponseEntity<Flight> showSpecificFlight(Long flightId){
-        return new ResponseEntity<>(flightService.findFlightById(flightId), HttpStatus.OK);
+    public ResponseEntity<Flight> showSpecificFlight(@PathVariable Long id){
+        return new ResponseEntity<>(flightService.findFlightById(id), HttpStatus.OK);
     }
-//    TODO: CANCEL A FLIGHT
 
+//    TODO: CANCEL A FLIGHT
+//    DESTROY
+    @DeleteMapping({"/{id}"})
+    public ResponseEntity<Long> deleteFlight(@PathVariable Long id){
+        flightService.removeFlight(id);
+        return new ResponseEntity<>(id, HttpStatus.ACCEPTED);
+    }
 }

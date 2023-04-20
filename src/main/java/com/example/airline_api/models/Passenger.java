@@ -11,7 +11,7 @@ public class Passenger {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column
     private String name;
@@ -69,5 +69,15 @@ public class Passenger {
 
     public void setFlights(List<Flight> flights) {
         this.flights = flights;
+    }
+
+
+//    METHODS ASSOCIATED WITH MANY TO MANY
+    public void addToFlight(Flight flight){
+        this.flights.add(flight);
+    }
+
+    public void removeFromFlight(Flight flight){
+        this.flights.remove(flight);
     }
 }
