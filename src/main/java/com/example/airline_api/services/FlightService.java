@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.airline_api.repositories.FlightRepository;
 
+import java.util.List;
+
 @Service
 public class FlightService {
 
@@ -20,4 +22,15 @@ public class FlightService {
     public void saveFlight(Flight flight){
         flightRepository.save(flight);
     }
+
+//    CUSTOM METHODS
+    public List<Flight> findAllFlights(){
+        return flightRepository.findAll();
+    }
+
+    public Flight findFlightById(Long id){
+        return flightRepository.findById(id).get();
+    }
+    
+
 }

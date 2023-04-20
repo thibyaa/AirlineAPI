@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.airline_api.services.FlightService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/flights")
 public class FlightController {
@@ -22,7 +24,18 @@ public class FlightController {
     }
 
 //    TODO: DISPLAY ALL AVAILABLE FLIGHTS
+//    INDEX
+    @GetMapping
+    public ResponseEntity<List<Flight>> seeAllFlight(){
+        return new ResponseEntity<>(flightService.findAllFlights(), HttpStatus.OK);
+    }
+
 //    TODO: DISPLAY DETAILS OF A SPECIFIC FLIGHT
+//    SHOW
+    @GetMapping("/{id}")
+    public ResponseEntity<Flight> showSpecificFlight(Long flightId){
+        return new ResponseEntity<>(flightService.findFlightById(flightId), HttpStatus.OK);
+    }
 //    TODO: CANCEL A FLIGHT
 
 }
