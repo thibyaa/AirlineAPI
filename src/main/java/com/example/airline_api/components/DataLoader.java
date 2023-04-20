@@ -28,11 +28,13 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         Flight hawaiiFlight = new Flight("Hawaii", 200, "16.06.23", "12:00");
         Flight japanFlight = new Flight("Japan", 250, "31.05.23", "13:00");
-        Passenger Anna = new Passenger("Anna", "anna@bnta.com");
-        Passenger Zsolt = new Passenger("Zsolt", "zsolt@bnta.com");
+        Passenger anna = new Passenger("Anna", "anna@bnta.com");
+        Passenger zsolt = new Passenger("Zsolt", "zsolt@bnta.com");
         flightService.saveFlight(hawaiiFlight);
         flightService.saveFlight(japanFlight);
-        passengerService.savePassenger(Anna);
-        passengerService.savePassenger(Zsolt);
+        anna.addToFlight(hawaiiFlight);
+        zsolt.addToFlight(japanFlight);
+        passengerService.savePassenger(anna);
+        passengerService.savePassenger(zsolt);
     }
 }

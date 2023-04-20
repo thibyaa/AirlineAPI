@@ -17,17 +17,17 @@ public class FlightService {
     @Autowired
     PassengerService passengerService;
 
-//    logic: adds a new flight to the repo, returns information of the flight
-    public Flight addNewFlight(Flight flight){
-       return flightRepository.save(flight);
-    }
-
 //    logic: saves the flight to the repo
     public void saveFlight(Flight flight){
         flightRepository.save(flight);
     }
 
 //    CUSTOM METHODS
+//    logic: adds a new flight to the repo, returns information of the flight
+    public Flight addNewFlight(Flight flight){
+        return flightRepository.save(flight);
+    }
+
     public List<Flight> findAllFlights(){
         return flightRepository.findAll();
     }
