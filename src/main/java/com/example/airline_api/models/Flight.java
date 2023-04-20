@@ -1,4 +1,4 @@
-package models;
+package com.example.airline_api.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
@@ -6,12 +6,11 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Entity(name="flights")
 public class Flight {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
     private long id;
     @Column
     private String destination;
@@ -40,7 +39,6 @@ public class Flight {
     }
 
 //    GETTERS AND SETTERS
-
     public long getId() {
         return id;
     }
