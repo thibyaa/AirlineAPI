@@ -18,9 +18,9 @@ public class Flight {
     private String destination;
     @Column
     private int capacity;
-    @Column(name="departure_date")
+    @Column
     private LocalDate departureDate;
-    @Column(name="departure_time")
+    @Column
     private LocalTime deparutureTime;
     @ManyToMany(mappedBy = "flights")
     @JsonIgnoreProperties({"flights"})

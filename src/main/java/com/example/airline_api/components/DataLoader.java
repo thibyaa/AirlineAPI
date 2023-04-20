@@ -29,8 +29,8 @@ public class DataLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        Flight hawaiiFlight = new Flight("Hawaii", 1);
-        Flight japanFlight = new Flight("Japan", 250);
+        Flight hawaiiFlight = new Flight("Hawaii", 10);
+        Flight japanFlight = new Flight("Japan", 15);
         Passenger anna = new Passenger("Anna", "anna@bnta.com");
         Passenger zsolt = new Passenger("Zsolt", "zsolt@bnta.com");
         flightService.saveFlight(hawaiiFlight);
