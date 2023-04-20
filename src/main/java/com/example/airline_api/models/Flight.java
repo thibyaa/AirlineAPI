@@ -3,6 +3,8 @@ package com.example.airline_api.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,18 +19,18 @@ public class Flight {
     @Column
     private int capacity;
     @Column(name="departure_date")
-    private String departureDate;
+    private LocalDate departureDate;
     @Column(name="departure_time")
-    private String deparutureTime;
+    private LocalTime deparutureTime;
     @ManyToMany(mappedBy = "flights")
     @JsonIgnoreProperties({"flights"})
     private List<Passenger> passengers;
 
-    public Flight(String destination, int capacity, String departureDate, String deparutureTime){
+    public Flight(String destination, int capacity){
         this.destination = destination;
         this.capacity = capacity;
-        this.departureDate = departureDate;
-        this.deparutureTime = deparutureTime;
+        this.departureDate = LocalDate.now().plusDays(10);
+        this.deparutureTime = LocalTime.now().plusHours(9);
         this.passengers = new ArrayList<>();
 
     }
@@ -39,11 +41,11 @@ public class Flight {
     }
 
 //    GETTERS AND SETTERS
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -63,19 +65,19 @@ public class Flight {
         this.capacity = capacity;
     }
 
-    public String getDepartureDate() {
+    public LocalDate getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(String departureDate) {
+    public void setDepartureDate(LocalDate departureDate) {
         this.departureDate = departureDate;
     }
 
-    public String getDeparutureTime() {
+    public LocalTime getDeparutureTime() {
         return deparutureTime;
     }
 
-    public void setDeparutureTime(String deparutureTime) {
+    public void setDeparutureTime(LocalTime deparutureTime) {
         this.deparutureTime = deparutureTime;
     }
 

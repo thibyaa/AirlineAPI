@@ -10,6 +10,9 @@ import com.example.airline_api.services.PassengerService;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 @Component
 public class DataLoader implements ApplicationRunner {
 
@@ -26,8 +29,8 @@ public class DataLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        Flight hawaiiFlight = new Flight("Hawaii", 200, "16.06.23", "12:00");
-        Flight japanFlight = new Flight("Japan", 250, "31.05.23", "13:00");
+        Flight hawaiiFlight = new Flight("Hawaii", 1);
+        Flight japanFlight = new Flight("Japan", 250);
         Passenger anna = new Passenger("Anna", "anna@bnta.com");
         Passenger zsolt = new Passenger("Zsolt", "zsolt@bnta.com");
         flightService.saveFlight(hawaiiFlight);

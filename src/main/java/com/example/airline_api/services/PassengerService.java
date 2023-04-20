@@ -32,12 +32,22 @@ public class PassengerService {
         return passengerRepository.findById(id).get();
     }
 
+//    public Passenger addPassengerToFlight(Passenger passenger, Long flightId){
+////        find flight by id
+//        Flight flight = flightRepository.findById(flightId).get();
+////        set passengers flight to flight id
+//        passenger.addToFlight(flight);
+////        save passenger
+//        return passengerRepository.save(passenger);
+//    }
+
     public Passenger addPassengerToFlight(Passenger passenger, Long flightId){
-//        find flight by id
-//        set passengers flight to flight id
-//        save passenger
         Flight flight = flightRepository.findById(flightId).get();
-        passenger.addToFlight(flight);
+        if(flight.getCapacity() < flight.getCapacity()){
+            passenger.addToFlight(flight);
+//            else statement?? to maybe inform passenger
+//            that the flight is full????
+        }
         return passengerRepository.save(passenger);
     }
 }

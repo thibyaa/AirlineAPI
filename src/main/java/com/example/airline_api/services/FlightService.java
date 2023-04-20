@@ -32,6 +32,10 @@ public class FlightService {
         return flightRepository.findAll();
     }
 
+    public List<Flight> findFlightsByDestination(String destination){
+        return flightRepository.findByDestination(destination);
+    }
+
     public Flight findFlightById(Long id){
         return flightRepository.findById(id).get();
     }

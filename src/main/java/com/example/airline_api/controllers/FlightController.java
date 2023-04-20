@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import com.example.airline_api.services.FlightService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/flights")
@@ -24,10 +25,14 @@ public class FlightController {
     }
 
 //    TODO: DISPLAY ALL AVAILABLE FLIGHTS
-//    INDEX
+//    INDEX/SHOW
     @GetMapping
-    public ResponseEntity<List<Flight>> seeAllFlight(){
-        return new ResponseEntity<>(flightService.findAllFlights(), HttpStatus.OK);
+    public ResponseEntity<List<Flight>> seeAllFlight(@RequestParam(required = false) String destination){
+        if(destination != null ){
+        return new ResponseEntity<>(flightService.findFlightsByDestination(destination), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(flightService.findAllFlights(), HttpStatus.OK);
+        }
     }
 
 //    TODO: DISPLAY DETAILS OF A SPECIFIC FLIGHT
